@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+  <h1>Weather App</h1>
+
+  <form>
+    <label>Enter a U.S. city</label>
+    <input id="weatherInput" type="text"></input><br/>
+    <input id="weatherSubmit" type="submit" value="Submit"></input>
+  </form>
+
+  <div id="weatherResults" style="display: none">
+    <h2 id="location_holder"></h2>
+    <div id="icon_holder"></div>
+    <h3 id="description"></h3>
+    <div class="container">
+      <div class="row ">
+        <div id="wind_speed" class="col-sm"></div>
+        <div id="current_temp" class="col-sm"></div>
+	<div id="humidity" class="col-sm"></div>
+      </div>
+      <div class="row">
+	<div id="wind_direction" class="col-sm"></div>
+        <div id="feels_like" class="col-sm"></div>
+	<div id="pressure" class="col-sm"></div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div id="forecastResults" style="display: none">
+    <h2>Weather Forecast</h2>
+    <table id="forecast">
+      <thead>
+	<tr>
+          <th>Time</th>
+	  <th colspan="4" id=day_1_label>Day One</th>
+          <th colspan="4" id=day_2_label>Day Two</th>
+          <th colspan="4" id=day_3_label>Day Three</th>
+          <th colspan="4" id=day_4_label>Day Four</th>
+          <th colspan="4" id=day_5_label>Day Five</th>
+	</tr>
+	<tr>
+	  <th></th>
+	  <th>Low</th>
+          <th>High</th>
+          <th colspan="2">Weather</th>
+
+	  <th>Low</th>
+          <th>High</th>
+          <th colspan="2">Weather</th>
+
+	  <th>Low</th>
+          <th>High</th>
+          <th colspan="2">Weather</th>
+
+	  <th>Low</th>
+          <th>High</th>
+          <th colspan="2">Weather</th>
+
+	  <th>Low</th>
+          <th>High</th>
+          <th colspan="2">Weather</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+	  <td>3:00 A.M.</td>
+	  <td id="day_1_3am_low">Data goes here</td>
+	  <td id="day_1_3am_high">Data goes here</td>
+	  <td id="day_1_3am_icon">Icon goes here</td>
+	  <td id="day_1_3am_description">Data goes here</td>
+
+	  <td id="day_2_3am_low">Data goes here</td>
+	  <td id="day_2_3am_high">Data goes here</td>
+	  <td id="day_2_3am_icon">Icon goes here</td>
+	  <td id="day_2_3am_description">Data goes here</td>
+
+	  <td id="day_3_3am_low">Data goes here</td>
+	  <td id="day_3_3am_high">Data goes here</td>
+	  <td id="day_3_3am_icon">Icon goes here</td>
+	  <td id="day_3_3am_description">Data goes here</td>
+
+	  <td id="day_4_3am_low">Data goes here</td>
+	  <td id="day_4_3am_high">Data goes here</td>
+	  <td id="day_4_3am_icon">Icon goes here</td>
+	  <td id="day_4_3am_description">Data goes here</td>
+
+	  <td id="day_5_3am_low">Data goes here</td>
+	  <td id="day_5_3am_high">Data goes here</td>
+	  <td id="day_5_3am_icon">Icon goes here</td>
+	  <td id="day_5_3am_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>6:00 A.M.</td>
+	  <td id="day_1_6am_low">Data goes here</td>
+	  <td id="day_1_6am_high">Data goes here</td>
+	  <td id="day_1_6am_icon">Icon goes here</td>
+	  <td id="day_1_6am_description">Data goes here</td>
+
+	  <td id="day_2_6am_low">Data goes here</td>
+	  <td id="day_2_6am_high">Data goes here</td>
+	  <td id="day_2_6am_icon">Icon goes here</td>
+	  <td id="day_2_6am_description">Data goes here</td>
+
+	  <td id="day_3_6am_low">Data goes here</td>
+	  <td id="day_3_6am_high">Data goes here</td>
+	  <td id="day_3_6am_icon">Icon goes here</td>
+	  <td id="day_3_6am_description">Data goes here</td>
+
+	  <td id="day_4_6am_low">Data goes here</td>
+	  <td id="day_4_6am_high">Data goes here</td>
+	  <td id="day_4_6am_icon">Icon goes here</td>
+	  <td id="day_4_6am_description">Data goes here</td>
+
+	  <td id="day_5_6am_low">Data goes here</td>
+	  <td id="day_5_6am_high">Data goes here</td>
+	  <td id="day_5_6am_icon">Icon goes here</td>
+	  <td id="day_5_6am_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>9:00 A.M.</td>
+	  <td id="day_1_9am_low">Data goes here</td>
+	  <td id="day_1_9am_high">Data goes here</td>
+	  <td id="day_1_9am_icon">Icon goes here</td>
+	  <td id="day_1_9am_description">Data goes here</td>
+
+	  <td id="day_2_9am_low">Data goes here</td>
+	  <td id="day_2_9am_high">Data goes here</td>
+	  <td id="day_2_9am_icon">Icon goes here</td>
+	  <td id="day_2_9am_description">Data goes here</td>
+
+	  <td id="day_3_9am_low">Data goes here</td>
+	  <td id="day_3_9am_high">Data goes here</td>
+	  <td id="day_3_9am_icon">Icon goes here</td>
+	  <td id="day_3_9am_description">Data goes here</td>
+
+	  <td id="day_4_9am_low">Data goes here</td>
+	  <td id="day_4_9am_high">Data goes here</td>
+	  <td id="day_4_9am_icon">Icon goes here</td>
+	  <td id="day_4_9am_description">Data goes here</td>
+
+	  <td id="day_5_9am_low">Data goes here</td>
+	  <td id="day_5_9am_high">Data goes here</td>
+	  <td id="day_5_9am_icon">Icon goes here</td>
+	  <td id="day_5_9am_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>12:00 P.M.</td>
+	  <td id="day_1_12pm_low">Data goes here</td>
+	  <td id="day_1_12pm_high">Data goes here</td>
+	  <td id="day_1_12pm_icon">Icon goes here</td>
+	  <td id="day_1_12pm_description">Data goes here</td>
+
+	  <td id="day_2_12pm_low">Data goes here</td>
+	  <td id="day_2_12pm_high">Data goes here</td>
+	  <td id="day_2_12pm_icon">Icon goes here</td>
+	  <td id="day_2_12pm_description">Data goes here</td>
+
+	  <td id="day_3_12pm_low">Data goes here</td>
+	  <td id="day_3_12pm_high">Data goes here</td>
+	  <td id="day_3_12pm_icon">Icon goes here</td>
+	  <td id="day_3_12pm_description">Data goes here</td>
+
+	  <td id="day_4_12pm_low">Data goes here</td>
+	  <td id="day_4_12pm_high">Data goes here</td>
+	  <td id="day_4_12pm_icon">Icon goes here</td>
+	  <td id="day_4_12pm_description">Data goes here</td>
+
+	  <td id="day_5_12pm_low">Data goes here</td>
+	  <td id="day_5_12pm_high">Data goes here</td>
+	  <td id="day_5_12pm_icon">Icon goes here</td>
+	  <td id="day_5_12pm_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>3:00 P.M.</td>
+	  <td id="day_1_3pm_low">Data goes here</td>
+	  <td id="day_1_3pm_high">Data goes here</td>
+	  <td id="day_1_3pm_icon">Icon goes here</td>
+	  <td id="day_1_3pm_description">Data goes here</td>
+
+	  <td id="day_2_3pm_low">Data goes here</td>
+	  <td id="day_2_3pm_high">Data goes here</td>
+	  <td id="day_2_3pm_icon">Icon goes here</td>
+	  <td id="day_2_3pm_description">Data goes here</td>
+
+	  <td id="day_3_3pm_low">Data goes here</td>
+	  <td id="day_3_3pm_high">Data goes here</td>
+	  <td id="day_3_3pm_icon">Icon goes here</td>
+	  <td id="day_3_3pm_description">Data goes here</td>
+
+	  <td id="day_4_3pm_low">Data goes here</td>
+	  <td id="day_4_3pm_high">Data goes here</td>
+	  <td id="day_4_3pm_icon">Icon goes here</td>
+	  <td id="day_4_3pm_description">Data goes here</td>
+
+	  <td id="day_5_3pm_low">Data goes here</td>
+	  <td id="day_5_3pm_high">Data goes here</td>
+	  <td id="day_5_3pm_icon">Icon goes here</td>
+	  <td id="day_5_3pm_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>6:00 P.M.</td>
+	  <td id="day_1_6pm_low">Data goes here</td>
+	  <td id="day_1_6pm_high">Data goes here</td>
+	  <td id="day_1_6pm_icon">Icon goes here</td>
+	  <td id="day_1_6pm_description">Data goes here</td>
+
+	  <td id="day_2_6pm_low">Data goes here</td>
+	  <td id="day_2_6pm_high">Data goes here</td>
+	  <td id="day_2_6pm_icon">Icon goes here</td>
+	  <td id="day_2_6pm_description">Data goes here</td>
+
+	  <td id="day_3_6pm_low">Data goes here</td>
+	  <td id="day_3_6pm_high">Data goes here</td>
+	  <td id="day_3_6pm_icon">Icon goes here</td>
+	  <td id="day_3_6pm_description">Data goes here</td>
+
+	  <td id="day_4_6pm_low">Data goes here</td>
+	  <td id="day_4_6pm_high">Data goes here</td>
+	  <td id="day_4_6pm_icon">Icon goes here</td>
+	  <td id="day_4_6pm_description">Data goes here</td>
+
+	  <td id="day_5_6pm_low">Data goes here</td>
+	  <td id="day_5_6pm_high">Data goes here</td>
+	  <td id="day_5_6pm_icon">Icon goes here</td>
+	  <td id="day_5_6pm_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>9:00 P.M.</td>
+	  <td id="day_1_9pm_low">Data goes here</td>
+	  <td id="day_1_9pm_high">Data goes here</td>
+	  <td id="day_1_9pm_icon">Icon goes here</td>
+	  <td id="day_1_9pm_description">Data goes here</td>
+
+	  <td id="day_2_9pm_low">Data goes here</td>
+	  <td id="day_2_9pm_high">Data goes here</td>
+	  <td id="day_2_9pm_icon">Icon goes here</td>
+	  <td id="day_2_9pm_description">Data goes here</td>
+
+	  <td id="day_3_9pm_low">Data goes here</td>
+	  <td id="day_3_9pm_high">Data goes here</td>
+	  <td id="day_3_9pm_icon">Icon goes here</td>
+	  <td id="day_3_9pm_description">Data goes here</td>
+
+	  <td id="day_4_9pm_low">Data goes here</td>
+	  <td id="day_4_9pm_high">Data goes here</td>
+	  <td id="day_4_9pm_icon">Icon goes here</td>
+	  <td id="day_4_9pm_description">Data goes here</td>
+
+	  <td id="day_5_9pm_low">Data goes here</td>
+	  <td id="day_5_9pm_high">Data goes here</td>
+	  <td id="day_5_9pm_icon">Icon goes here</td>
+	  <td id="day_5_9pm_description">Data goes here</td>
+        </tr>
+	<tr>
+	  <td>12:00 A.M.</td>
+	  <td id="day_1_12am_low">Data goes here</td>
+	  <td id="day_1_12am_high">Data goes here</td>
+	  <td id="day_1_12am_icon">Icon goes here</td>
+	  <td id="day_1_12am_description">Data goes here</td>
+
+	  <td id="day_2_12am_low">Data goes here</td>
+	  <td id="day_2_12am_high">Data goes here</td>
+	  <td id="day_2_12am_icon">Icon goes here</td>
+	  <td id="day_2_12am_description">Data goes here</td>
+
+	  <td id="day_3_12am_low">Data goes here</td>
+	  <td id="day_3_12am_high">Data goes here</td>
+	  <td id="day_3_12am_icon">Icon goes here</td>
+	  <td id="day_3_12am_description">Data goes here</td>
+
+	  <td id="day_4_12am_low">Data goes here</td>
+	  <td id="day_4_12am_high">Data goes here</td>
+	  <td id="day_4_12am_icon">Icon goes here</td>
+	  <td id="day_4_12am_description">Data goes here</td>
+
+	  <td id="day_5_12am_low">Data goes here</td>
+	  <td id="day_5_12am_high">Data goes here</td>
+	  <td id="day_5_12am_icon">Icon goes here</td>
+	  <td id="day_5_12am_description">Data goes here</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <footer class="page-footer font-large">
+    <div class="container-fluid text-center text-lg-left">
+      <div class="row">
+      	<div class="col justify-content-center">
+	  <div class="d-flex justify-content-center">
+            <h5>Thank you for visiting!</h5>
+	  </div>
+      	</div>
+      </div>
+      <div class="row">
+        <div class="col justify-content-center">
+	  <div class="d-flex justify-content-center">
+	    <ul class="list-unstyled">
+              <li>
+                <a href="https://github.com/Tolexrules/260-Lab-2">Github</a>
+              </li>
+            </ul>
+          </div>
+      	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+  <script text="type/javascript" src="/script.js">
+  </script>
+
+</body>
+
+</html>
